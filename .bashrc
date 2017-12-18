@@ -1,14 +1,21 @@
-
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# root権限時は色を変える
+if [ $UID -eq 0 ]; then
+    PS1="\[\033[31m\]\u@\h\[\033[00m\]:\[\033[01m\]\W\[\033[00m\]\\$ "
+else
+    PS1="\[\033[36m\]\u@\h\[\033[00m\]:\[\033[01m\]\W\[\033[00m\]\\$ "
+fi
+
+
 PS1="\u@\h:\w> "
 
-# history $B$K%3%^%s%I<B9T;~9o$r5-O?$9$k(B
+# history にコマンド実行時刻を記録する
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '
 
-# less$BJ8;z2=$1(B
+# less文字化け
 export LESSCHARSET=utf-8
 
 # alias setting
