@@ -91,7 +91,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " " unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neocomplete.vim'
+
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
@@ -102,15 +102,6 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> ,up :<C-u>Unite -auto-preview<CR>
-
-" " neocomplete用設定
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_smart_case = 1
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 " " vim-yaml
 NeoBundle 'stephpy/vim-yaml'
