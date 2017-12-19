@@ -8,6 +8,8 @@ set fileformats=unix,dos,mac
 set nobackup
 " " 編集中のファイル名表示
 set title
+" " backspaceを使う
+set backspace=indent,eol,start
 " " 検索履歴を50個残す
 set history=50
 " " 検索時に大文字小文字を区別しない
