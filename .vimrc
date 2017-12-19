@@ -28,7 +28,8 @@ set number
 "タブ、空白、改行の可視化
 set list
 set list listchars=tab:¦_,trail:_,extends:>,precedes:<,nbsp:%
-"set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+" " esc二回押しでハイライト削除
+nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 
 ""全角スペースをハイライト表示
 function! ZenkakuSpace()
