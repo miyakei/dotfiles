@@ -1,37 +1,35 @@
 #!/bin/bash
 
-# check existing vimrc
-if [ -f "$HOME/.vimrc" ]; then
-	echo "Already has a vimrc file. Backup for the existing vimrc ? [Y/y/N/n]"
-	read ANSWER
-	case $ANSWER in
-		"Y" | "y" | "yes" | "Yes" | "YES" )
-			if [ -L $HOME/.vimrc ]; then
-				echo "The vimrc is a symbolic link."
-			else
-				mv $HOME/.vimrc $HOME/.vimrc_bak
-				echo "Backed up the existing vimrc as .vimrc_bak"
-			fi
-			;;
-		* )
-			echo "Check your existing vimrc file.";;
-	esac
-fi
+export dotfiles_dir=$HOME/dotfiles
 
-# check existing bashrc
-if [ -f "$HOME/.bashrc" ]; then
-	echo "Already has a bashrc file. Backup for the existing bashrc ? [Y/y/N/n]"
-	read ANSWER
-	case $ANSWER in
-		"Y" | "y" | "yes" | "Yes" | "YES" )
-			if [ -L $HOME/.bashrc ]; then
-				echo "The bashrc is a symbolic link."
-			else
-				mv $HOME/.bashrc $HOME/.bashrc_bak
-				echo "Backed up the existing bashrc as .bashrc_bak"
-			fi
-			;;
-		* )
-			echo "Check your existing bashrc file.";;
-	esac
-fi
+cd $HOME/dotfiles
+
+# create symbolic links
+for file in .??*; do
+	[[ "$file" == ".git" ]] && continue
+	[[ "$file" == ".DS_Store" ]] && continue
+	[[ "$file" == ".??*" ]] && continue
+
+	# check existing files
+	if [ -f "$HOME/${file}" ]; then
+		echo "Already has ${file}. Backup for the existing ${file} ? [Y/y/N/n]"
+		read ANSWER
+		case $ANSWER in
+			"Y" | "y" | "yes" | "Yes" | "YES" )
+				if [ -L $HOME/${file} ]; then
+					echo "The ${file} is a symbolic link."
+				else
+					mv $HOME/${file} $HOME/${file}_bak
+					echo "Backed up the existing ${file} as ${file}_bak"
+				fi
+				;;
+			* )
+				echo "Check your existing ${file}.";;
+		esac
+	else
+		ln -sf ${dotfiles_dir}/${file} $HOME/${file}
+		echo "Created symbolic link for ${file}"
+	fi
+done
+
+source $HOME/.bashrc
