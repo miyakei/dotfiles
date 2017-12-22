@@ -69,17 +69,17 @@ imap ( ()<LEFT>
 if 0 | endif
 
 "dein Scripts-----------------------------
-if isdirectory(expand("~/.vim/dein/repos/github.com/Shougo/dein.vim"))
+if isdirectory(expand("~/.vim/bundles/dein.vim"))
 
 if &compatible
 	set nocompatible " Be iMproved
 endif
 
 " Required:
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundles/dein.vim
 
 " Required:
-call dein#begin('~/.vim/dein')
+call dein#begin('~/.vim/bundles')
 
 " Let dein manage dein
 " Required:
@@ -108,6 +108,16 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
+" Clean up unused plugins
+function! s:deinClean()
+	if len(dein#check_clean())
+		call map(dein#check_clean(), 'delete(v:val, "rf")')
+	else
+		echo '[ERR] no disabled plugins'
+	endif
+endfunction
+command! DeinClean :call s:deinClean()
 
 endif
 "End dein Scripts-------------------------
