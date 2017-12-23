@@ -100,6 +100,8 @@ call dein#end()
 " Required:
 filetype plugin indent on
 syntax enable
+
+" colorscheme settings
 set background=dark
 colorscheme material-theme
 
