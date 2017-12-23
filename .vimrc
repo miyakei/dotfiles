@@ -43,10 +43,6 @@ if has('syntax')
 	call ZenkakuSpace()
 endif
 
-" " 構文ごとに色分け表示する 逆は [ syntax off ]
-syntax on
-" " [ syntax on ] の場合のコメント文の色を変更する
-highlight Comment ctermfg=LightCyan
 " " ウィンドウ幅で行を折り返す 逆は [ set nowrap ]
 set wrap
 " " TAB
@@ -96,6 +92,7 @@ nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+call dein#add('jdkanani/vim-material-theme')
 
 " Required:
 call dein#end()
@@ -103,6 +100,8 @@ call dein#end()
 " Required:
 filetype plugin indent on
 syntax enable
+set background=dark
+colorscheme material-theme
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
