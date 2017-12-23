@@ -13,7 +13,7 @@ for file in .??*; do
 	[[ "$file" == ".??*" ]] && continue
 
 	# check existing files
-	if [ ! -L "$HOME/${file}" ]; then
+	if [ -e "$HOME/${file}" -a ! -L "$HOME/${file}" ]; then
 		echo "Already has ${file}. Backup for the existing ${file} ? [Y/y/N/n]"
 		read ANSWER
 		case $ANSWER in
