@@ -27,4 +27,7 @@ for file in .??*; do
 	ln -sfnv ${dot_dir}/${file} $HOME/${file}
 done
 
+git submodule init
+git submodule update
+
 source $HOME/.bashrc
