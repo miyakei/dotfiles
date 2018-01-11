@@ -67,58 +67,61 @@ if 0 | endif
 "dein Scripts-----------------------------
 if isdirectory(expand("~/.vim/bundles/dein.vim"))
 
-if &compatible
-	set nocompatible " Be iMproved
-endif
-
-" Required:
-set runtimepath+=~/.vim/bundles/dein.vim
-
-" Required:
-call dein#begin('~/.vim/bundles')
-
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-
-" Add or remove your plugins here:
-call dein#add('Shougo/neocomplcache')
-call dein#add('Shougo/Unite.vim')
-call dein#add('Shougo/neomru.vim')
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-call dein#add('jdkanani/vim-material-theme')
-
-" Required:
-call dein#end()
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" colorscheme settings
-set background=dark
-colorscheme material-theme
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-" Clean up unused plugins
-function! s:deinClean()
-	if len(dein#check_clean())
-		call map(dein#check_clean(), 'delete(v:val, "rf")')
-	else
-		echo '[ERR] no disabled plugins'
+	if &compatible
+		set nocompatible " Be iMproved
 	endif
-endfunction
-command! DeinClean :call s:deinClean()
+
+	" Required:
+	set runtimepath+=~/.vim/bundles/dein.vim
+
+	" Required:
+	if dein#load_state('~/.vim/bundles')
+		call dein#begin('~/.vim/bundles')
+
+		" Let dein manage dein
+		" Required:
+		call dein#add('Shougo/dein.vim')
+
+		" Add or remove your plugins here:
+		call dein#add('Shougo/neocomplcache')
+		call dein#add('Shougo/Unite.vim')
+		call dein#add('Shougo/neomru.vim')
+		let g:unite_enable_start_insert=1
+		let g:unite_source_history_yank_enable =1
+		let g:unite_source_file_mru_limit=200
+		nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+		nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+		nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+		nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+		call dein#add('jdkanani/vim-material-theme')
+
+		" Required:
+		call dein#end()
+		call dein#save_state()
+	endif
+
+	" Required:
+	filetype plugin indent on
+	syntax enable
+
+	" colorscheme settings
+	set background=dark
+	colorscheme material-theme
+
+	" If you want to install not installed plugins on startup.
+	if dein#check_install()
+		call dein#install()
+	endif
+
+	" Clean up unused plugins
+	function! s:deinClean()
+		if len(dein#check_clean())
+			call map(dein#check_clean(), 'delete(v:val, "rf")')
+		else
+			echo '[ERR] no disabled plugins'
+		endif
+	endfunction
+	command! DeinClean :call s:deinClean()
 
 endif
 "End dein Scripts-------------------------
