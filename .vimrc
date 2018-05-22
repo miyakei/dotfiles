@@ -1,7 +1,7 @@
 " " encoding settings
 set encoding=utf-8
 scriptencoding utf-8
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
 set fileformats=unix,dos,mac
 " " バックアップをとる 逆は [ set nobackup ]
 set nobackup
@@ -87,7 +87,7 @@ if isdirectory(expand("~/.vim/bundles/dein.vim"))
 		call dein#add('Shougo/Unite.vim')
 		call dein#add('Shougo/neomru.vim')
 		let g:unite_enable_start_insert=1
-		let g:unite_source_history_yank_enable =1
+		let g:unite_source_history_yank_enable=1
 		let g:unite_source_file_mru_limit=200
 		nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 		nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
