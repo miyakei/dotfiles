@@ -107,7 +107,6 @@ if dein#load_state(s:dein_dir)
 	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 	nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 	nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-	call dein#add('jdkanani/vim-material-theme')
 
 	" Required:
 	call dein#end()
