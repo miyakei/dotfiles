@@ -31,6 +31,10 @@ set list listchars=tab:¦_,trail:_,extends:>,precedes:<,nbsp:%
 nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 " 括弧入力時に対応する括弧を強調する
 set showmatch
+" コマンド補完を強化
+set wildmenu
+" リスト表示，最長マッチ
+set wildmode=list:full
 
 " 全角スペースをハイライト表示
 function! ZenkakuSpace()
