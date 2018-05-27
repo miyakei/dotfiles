@@ -87,26 +87,13 @@ endif
 
 " Required:
 let s:dein_dir = expand('~/.vim/bundles')
+let s:toml_dir = expand('~/.vim/dein_toml')
 
 " Required:
 if dein#load_state(s:dein_dir)
 	call dein#begin(s:dein_dir)
-
-	" Let dein manage dein
-	" Required:
-	call dein#add('Shougo/dein.vim')
-
-	" Add or remove your plugins here:
-	call dein#add('Shougo/neocomplcache')
-	call dein#add('Shougo/Unite.vim')
-	call dein#add('Shougo/neomru.vim')
-	let g:unite_enable_start_insert=1
-	let g:unite_source_history_yank_enable=1
-	let g:unite_source_file_mru_limit=200
-	nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-	nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-	nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+	call dein#load_toml(s:toml_dir . '/dein.toml'     , {'lazy': 0})
+	call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
 
 	" Required:
 	call dein#end()
