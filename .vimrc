@@ -1,35 +1,38 @@
-" " encoding settings
+" beginning of default settings
+" --------------------------------------------------------------------------------
+
+" encoding settings
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
 set fileformats=unix,dos,mac
-" " バックアップをとる 逆は [ set nobackup ]
+" バックアップをとる 逆は [ set nobackup ]
 set nobackup
-" " 編集中のファイル名表示
+" 編集中のファイル名表示
 set title
-" " backspaceを使う
+" backspaceを使う
 set backspace=indent,eol,start
-" " 検索履歴を50個残す
+" 検索履歴を50個残す
 set history=50
-" " 検索時に大文字小文字を区別しない
+" 検索時に大文字小文字を区別しない
 set ignorecase
-" " 検索語に大文字を混ぜると検索時に大文字を区別する
+" 検索語に大文字を混ぜると検索時に大文字を区別する
 set smartcase
-" " 検索語にマッチした単語をハイライトする 逆は [ set nohlsearch ]
+" 検索語にマッチした単語をハイライトする 逆は [ set nohlsearch ]
 set hlsearch
-" " インクリメンタルサーチを使う 逆は [ set noincsearch ]
+" インクリメンタルサーチを使う 逆は [ set noincsearch ]
 set incsearch
-" " 行番号を表示する 逆は [ set nonumber ]
+" 行番号を表示する 逆は [ set nonumber ]
 set number
 "タブ、空白、改行の可視化
 set list
 set list listchars=tab:¦_,trail:_,extends:>,precedes:<,nbsp:%
-" " esc二回押しでハイライト削除
+" esc二回押しでハイライト削除
 nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
-" " 括弧入力時に対応する括弧を強調する
+" 括弧入力時に対応する括弧を強調する
 set showmatch
 
-""全角スペースをハイライト表示
+" 全角スペースをハイライト表示
 function! ZenkakuSpace()
 	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
@@ -45,17 +48,17 @@ endif
 
 " " ウィンドウ幅で行を折り返す 逆は [ set nowrap ]
 set wrap
-" " TAB
+" TAB
 set tabstop=4     "" 表示上の幅
 set shiftwidth=4  "" 自動インデントの長さ
 set softtabstop=4 "" 連続した空白の削除数
 set autoindent    "" 改行時に前の行のインデントを継続する
 set smartindent   "" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-" " swapファイルを作成しない
+" swapファイルを作成しない
 set noswapfile
-" " 他のファイルにペースト
+" 他のファイルにペースト
 set clipboard=unnamedplus,autoselect
-" " 自動閉じ括弧入力
+" 自動閉じ括弧入力
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
@@ -64,7 +67,11 @@ imap ( ()<LEFT>
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-"dein Scripts-----------------------------
+" --------------------------------------------------------------------------------
+" end of default settings
+
+" beginning of dein scripts
+" --------------------------------------------------------------------------------
 if isdirectory(expand("~/.vim/bundles/dein.vim"))
 
 	if &compatible
@@ -124,4 +131,6 @@ if isdirectory(expand("~/.vim/bundles/dein.vim"))
 	command! DeinClean :call s:deinClean()
 
 endif
-"End dein Scripts-------------------------
+
+" --------------------------------------------------------------------------------
+"end of dein scripts
