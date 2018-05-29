@@ -77,7 +77,7 @@ if 0 | endif
 " beginning of dein scripts (be read if dein.vim is installed)
 " --------------------------------------------------------------------------------
 
-if filereadable(expand("~/.vim/bundles/dein.vim/README.md"))
+if filereadable(expand("$HOME/.vim/bundles/dein.vim/README.md"))
 
 set runtimepath+=~/.vim/bundles/dein.vim
 
@@ -86,8 +86,8 @@ if &compatible
 endif
 
 " Required:
-let s:dein_dir = expand('~/.vim/bundles')
-let s:toml_dir = expand('~/.vim/dein_toml')
+let s:dein_dir = expand('$HOME/.vim/bundles')
+let s:toml_dir = expand('$HOME/.vim/dein_toml')
 
 " Required:
 if dein#load_state(s:dein_dir)
