@@ -18,12 +18,16 @@ HISTTIMEFORMAT='%Y-%m-%dT%T%z '
 # less文字化け
 export LESSCHARSET=utf-8
 
-# alias setting
-alias gitst='git status'
+### alias setting
+alias gs='git status'
+alias gd='git diff'
 alias gitch='git checkout'
 alias diffc='for file in `git diff --name-only`;do perl -c $file;done'
 alias res_apache='sudo apachectl restart'
 alias gitcon='git branch --contains '
+
+# rmate settings
+alias code='rmate -p 52698 '
 
 # mysqlconn
 
